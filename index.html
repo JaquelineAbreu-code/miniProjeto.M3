@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>miniProjeto.M3</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <nav class="menu">
+        <a href="index.html" class="menu-item">Home</a>
+        <a href="./produtos/produtos.html" >Ver Produtos</a>
+    </nav>
+    <section class="conteiner-form">
+        <h2>cadastrar produto</h2>
+        <form>
+            <input id="input-nome" type="text" placeholder="Nome do produto">
+            <input id="input-descricao" type="text" placeholder="Descrição do produto">
+            <input id="input-valor" type="number" placeholder="Valor do produto">
+            <select id="image-select">
+                <option value="">Selecione a imagem do produto</option>
+                 <option value="https://chaparadois.com.br/wp-content/uploads/2024/11/Bolo-de-Pistache-Inspirado-em-Confeitarias-Famosas-Receita-Completa.webp">Bolo de chocolate</option>
+                 <option value="https://cloudfront-us-east-1.images.arcpublishing.com/estadao/FIVYQFU6J5ND3PYRA6XQHR4NW4.jp">Bolo de pistache</option>
+            </select>
+            <button id ="botao-add" type="button">Adicionar Produto</button>
+        </form>
+    </section>
+    <section id="conteiner-products">
+        <ul id="lista-produtos"></ul>
+            <!-- Produtos serão adicionados aqui dinamicamente -->
+    </section>
+    <script src="script.js"></script>
+</body>
+</html>
