@@ -8,24 +8,25 @@
 </head>
 <body>
     <nav class="menu">
-        <a href="index.html" class="menu-item">Home</a>
-        <a href="./produtos/produtos.html" >Ver Produtos</a>
+        <a href="index.html" class="menu-item">Cadastro</a>
+        <a href="./produtos/produtos.html" >Lista de profissionais</a>
     </nav>
     <section class="conteiner-form">
-        <h2>cadastrar produto</h2>
+        <h2>Cadastre-se</h2>
         <form>
-            <input id="input-nome" type="text" placeholder="Nome do produto">
-            <input id="input-descricao" type="text" placeholder="Descrição do produto">
-            <input id="input-valor" type="number" placeholder="Valor do produto">
-            <select id="image-select">
-                <option value="">Selecione a imagem do produto</option>
-                 <option value="https://chaparadois.com.br/wp-content/uploads/2024/11/Bolo-de-Pistache-Inspirado-em-Confeitarias-Famosas-Receita-Completa.webp">Bolo de chocolate</option>
-                 <option value="https://cloudfront-us-east-1.images.arcpublishing.com/estadao/FIVYQFU6J5ND3PYRA6XQHR4NW4.jp">Bolo de pistache</option>
+            <input id="input-nome" type="text" placeholder="Nome do Profissional">
+            <input id="input-experiencia" type="number" placeholder="Anos de experiência">
+            <select id="area-select">
+                <option value="">Selecione a área de atuação</option>
+                <option value="Desencolvedor Web">Desenvolvedor Web</option>
+                <option value="Desenvolvedor BackEnd">Desenvolvedor BackEnd</option>
+                <option value="Desenvolvedor frontEnd">Desenvolvedor FrontEnd</option>
+                <option value="Desenvolvedor FullStack ">Desenvolvedor FullStack</option>
             </select>
-            <button id ="botao-add" type="button">Adicionar Produto</button>
+            <button id ="botao-add" type="button">Adicionar Profissional</button>
         </form>
     </section>
-    <section id="conteiner-products">
+    <section id="conteiner-profissionais">
         <ul id="lista-produtos"></ul>
             <!-- Produtos serão adicionados aqui dinamicamente -->
     </section>

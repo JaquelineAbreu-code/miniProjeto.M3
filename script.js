@@ -1,118 +1,107 @@
-class Produto{
-    constructor(nome,descricao, valor, imagem){
+class Profissional{
+    constructor(nome, experiencia, area){
        this.id = Date.now(); // Gera um ID único baseado no timestamp atual
         this.nome = nome;
-        this.descricao = descricao;
-        this.valor = valor;
-        this.imagem = imagem;
+        this.experiencia = experiencia;
+        this.area = area;
     }
 }
 
 const botaoAdd = document.getElementById('botao-add');
  
-botaoAdd.addEventListener('click', adicionarProduto);
+botaoAdd.addEventListener('click', adicionarProfissional);
 
 const nome = document.getElementById('input-nome');
-const descricao = document.getElementById('input-descricao');
-const valor = document.getElementById('input-valor');
-const imagem = document.getElementById('image-select');
-const conteinerProdutos = document.getElementById('conteiner-products');
+const experiencia = document.getElementById('input-experiencia');
+const area = document.getElementById('area-select');
+const conteinersProfissionais = document.getElementById('conteiner-profissionais');
 
-let listaProdutos = [];
+let listaProfissional = [];
 
-function adicionarProduto(event){
+function adicionarProfissional(event){
 event.preventDefault();
 
-const novoProduto = new Produto( nome.value, descricao.value, valor.value, imagem.value);
+const novoProfissional = new Profissional( nome.value, experiencia.value, area.value );
 
 
-listaProdutos.push(novoProduto);
+listaProfissional.push(novoProfissional);
 
-conteinerProdutos.innerHTML = ''; // Limpa o conteiner antes de adicionar novos produtos
+conteinersProfissionais.innerHTML = ''; // Limpa o conteiner antes de adicionar novos produtos
 
-atualizarListaProdutos();
+atualizarListaProfissional();
 
 // Limpar os campos
     nome.value = '';
-    descricao.value = '';
-    valor.value = '';
-    imagem.value = '';
+    experiencia.value = '';
+    area.value = '';
 
 }
 
-function atualizarListaProdutos() {
-    conteinerProdutos.innerHTML = ''; // Limpa o contêiner antes de recriar os produtos
+function atualizarListaProfissional() {
+    conteinersProfissionais.innerHTML = ''; // Limpa o contêiner antes de recriar os produtos
     
-    listaProdutos.forEach((produto) => {
+    listaProfissional.forEach((profissional) => {
         const item = document.createElement('div');
         item.classList.add('cards-produtos');
 
         item.innerHTML = `
-            <p>Nome: ${produto.nome}</p>
-            <p>Descrição: ${produto.descricao}</p>
-            <p>Valor: ${produto.valor}</p>
-            <img src="${produto.imagem}" alt="${produto.nome}">
+            <p>Profissional: ${Profissional.nome}</p>
+            <p>Experiência: ${Profissional.experiencia}</p>
+            <p>Área de atuação: ${Profissional.area}</p>
             <span>
-                <button onclick="editarProduto(${produto.id})">Editar</button>
-                <button onclick="excluirProduto(${produto.id})">Excluir</button>
+                <button onclick="editarProfissional(${Profissional.id})">Editar</button>
+                <button onclick="excluirProduto(${Profissional.id})">Excluir</button>
             </span>
         `;
 
-        conteinerProdutos.appendChild(item);
+        conteinersProfissionais.appendChild(item);
     });
 }
 
-function excluirProduto(id) {
-    listaProdutos = listaProdutos.filter(produto => produto.id !== id);
-    atualizarListaProdutos(); // Atualiza a interface
+function excluirProfissional(id) {
+    listaProfissional = listaProfissional.filter(Profissional => Profissional.id !== id);
+    atualizarListaProfissional(); // Atualiza a interface
 }
 
-function editarProduto(id) {
-    const produto = listaProdutos.find(produto => produto.id === id);
-    if (produto) {
-        // Preencher os inputs com os valores atuais
-        nome.value = produto.nome;
-        descricao.value = produto.descricao;
-        valor.value = produto.valor;
-        imagem.value = produto.imagem;
+function editarProfissional(id) {
+    const profissional = listaProfissional.find(p => p.id === id);
+    
+    if (profissional) {
+        nome.value = profissional.nome;
+        experiencia.value = profissional.experiencia;
+        area.value = profissional.area;
 
-        // Após editar e clicar em "Adicionar Produto", atualizar o produto
-        botaoAdd.onclick = () => {
-            produto.nome = nome.value;
-            produto.descricao = descricao.value;
-            produto.valor = valor.value;
-            produto.imagem = imagem.value;
+        botaoAdd.onclick = function () {
+            profissional.nome = nome.value;
+            profissional.experiencia = experiencia.value;
+            profissional.area = area.value;
+            
+            atualizarListaProfissional();
+            localStorage.setItem("profissionais", JSON.stringify(listaProfissional));
 
-            atualizarListaProdutos();
-            
-            // Restaurar função original do botão
-            botaoAdd.onclick = adicionarProduto;
-            
-            // Limpar campos
+            botaoAdd.onclick = adicionarProfissional; // Restaura o evento
             nome.value = '';
-            descricao.value = '';
-            valor.value = '';
-            imagem.value = '';
+            experiencia.value = '';
+            area.value = '';
         };
     }
 }
 
-function adicionarProduto(event) {
+function adicionarProfissional(event) {
     event.preventDefault();
 
-    const novoProduto = new Produto(nome.value, descricao.value, valor.value, imagem.value);
+    const novoProfissional = new Profissional(nome.value, experiencia.value, area.value);
 
     // Adicionar à lista de produtos
-    listaProdutos.push(novoProduto);
+    listaProfissional.push(novoProfissional);
 
     // **Salvar no localStorage**
-    localStorage.setItem("produtos", JSON.stringify(listaProdutos));
-
-    atualizarListaProdutos();
+localStorage.setItem("profissionais", JSON.stringify(listaProfissional));
+   
+atualizarListaProfissional();
 
     // Limpar campos
     nome.value = '';
-    descricao.value = '';
-    valor.value = '';
-    imagem.value = '';
+    experiencia.value = '';
+    area.value = '';
 }
