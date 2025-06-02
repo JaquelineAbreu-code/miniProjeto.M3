@@ -1,35 +1,36 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-br">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>miniProjeto.M3</title>
+    <title>Cadastro de Profissionais</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
+    <!-- Menu de navegação -->
     <nav class="menu">
         <a href="index.html" class="menu-item">Cadastro</a>
-        <a href="./produtos/produtos.html" >Lista de profissionais</a>
+        <a href="dashboard.html" class="menu-item">Lista de Profissionais</a>
     </nav>
+
+    <!-- Formulário de cadastro -->
     <section class="conteiner-form">
         <h2>Cadastre-se</h2>
         <form>
-            <input id="input-nome" type="text" placeholder="Nome do Profissional">
-            <input id="input-experiencia" type="number" placeholder="Anos de experiência">
-            <select id="area-select">
+            <input id="input-nome" type="text" placeholder="Nome do Profissional" required>
+            <input id="input-experiencia" type="number" placeholder="Anos de experiência" required>
+            <select id="area-select" required>
                 <option value="">Selecione a área de atuação</option>
-                <option value="Desencolvedor Web">Desenvolvedor Web</option>
+                <option value="Desenvolvedor Web">Desenvolvedor Web</option>
                 <option value="Desenvolvedor BackEnd">Desenvolvedor BackEnd</option>
-                <option value="Desenvolvedor frontEnd">Desenvolvedor FrontEnd</option>
-                <option value="Desenvolvedor FullStack ">Desenvolvedor FullStack</option>
+                <option value="Desenvolvedor FrontEnd">Desenvolvedor FrontEnd</option>
+                <option value="Desenvolvedor FullStack">Desenvolvedor FullStack</option>
             </select>
-            <button id ="botao-add" type="button">Adicionar Profissional</button>
+            <button id="botao-add" type="button">Adicionar Profissional</button>
+            <button id="botao-salvar" type="button" style="display:none;">Salvar Alterações</button>
         </form>
     </section>
-    <section id="conteiner-profissionais">
-        <ul id="lista-produtos"></ul>
-            <!-- Produtos serão adicionados aqui dinamicamente -->
-    </section>
+
     <script src="script.js"></script>
 </body>
 </html>
